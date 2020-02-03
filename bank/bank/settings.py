@@ -39,10 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'app',
-    'user.apps.UserConfig'
+    'user.apps.UserConfig',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'django.contrib.sites',  
+    'allauth',
+    'allauth.account',  
+    'rest_auth.registration',
+    'allauth.socialaccount',
     
 ]
-
+SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

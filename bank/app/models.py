@@ -32,7 +32,7 @@ class Account(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.PROTECT) #we cann't delete if it have a balance
 
     def __str__(self):
-            return f'{self.user.username} account'
+            return f'Account {self.id} of {self.user.username}'
 
 
 class Action(models.Model):
