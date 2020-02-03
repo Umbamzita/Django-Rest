@@ -9,7 +9,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
     # permission_classes = [IsAccountAdminOrReadOnly]
 
 
-class AccountViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.CreateModelMixin):
+class AccountViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
     serializer_class = AccountSerializer
     queryset = Account.objects.all()
 
@@ -22,7 +22,7 @@ class AccountViewSet(viewsets.GenericViewSet, mixins.ListModelMixin, mixins.Crea
         return self.queryset.filter(user=self.request.user)
 
 
-class ActionViewSet(viewsets.ModelViewSet):
+class ActionViewSet(mixins.ListModelMixin, mixins.CreateModelMixin, viewsets.GenericViewSet):
     
     queryset = Action.objects.all()
     serializer_class = ActionSerializer

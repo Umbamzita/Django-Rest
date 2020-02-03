@@ -31,6 +31,9 @@ class Account(models.Model):
     balance = models.DecimalField(default = 0, max_digits = 12, decimal_places = 2)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete = models.PROTECT) #we cann't delete if it have a balance
 
+    def __str__(self):
+            return f'{self.user.username} account'
+
 
 class Action(models.Model):
     amount = models.DecimalField(max_digits = 12, decimal_places = 2)
@@ -38,4 +41,4 @@ class Action(models.Model):
     account = models.ForeignKey(Account, on_delete = models.CASCADE, related_name = 'actions')
 
     def __str__(self):
-            return f'Account number {self.account.id} was changed on {str(self.amount)}'
+            return f'Account number {self.account.id} was changed on {self.amount}'
